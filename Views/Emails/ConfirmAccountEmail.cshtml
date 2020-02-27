@@ -1,0 +1,26 @@
+﻿@using MakanalTech.Utilities.RazorEmails.Views.Emails
+@using MakanalTech.Utilities.RazorEmails.Views.Shared
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@model ConfirmAccountEmailModel
+
+@{
+    ViewData["EmailTitle"] = "Welcome!";
+    var EmailButton = new EmailButtonModel("Confirm Email", Model.ConfirmEmailUrl);
+}
+
+<p>
+    We're excited to have you get started. First, you need to confirm your account. Just press the button below.
+</p>
+
+@await Html.PartialAsync("EmailButton", EmailButton)
+
+<p>
+    If you have any questions, just reply to this email—we're always happy to help out.
+</p>
+
+<p>
+    The Contoso Team
+</p>

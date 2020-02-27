@@ -1,0 +1,17 @@
+﻿@using MakanalTech.Utilities.RazorEmails.Views.Emails
+@using MakanalTech.Utilities.RazorEmails.Views.Shared
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@model ActionNotificationMessage
+
+@{
+    ViewData["EmailTitle"] = Model.EmailTitle;
+    ViewData["PreheaderText"] = Model.PreheaderText;
+    EmailButtonModel EmailButton = new EmailButtonModel(Model.CallbackAction, Model.CallbackUrl);
+}
+
+@Html.Raw(Model.Message)
+
+@await Html.PartialAsync("EmailButton", EmailButton)
